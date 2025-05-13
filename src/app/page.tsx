@@ -13,7 +13,21 @@ export default function HomePage() {
   const [error, setError] = useState<string>("");
 
   const handleSearch = async (username: string) => {
-    console.log("Search User");
+    try {
+      setError("");
+      setUser(null);
+      setRepos([]);
+      const userRes = await axios.get(
+        `https://api.github.com/users/${username}`
+      );
+      const repoRes = await axios.get(
+        `https://api.github.com/users/${username}/repos`
+      );
+      setUser(userRes.data);
+      setRepos(repoRes.data);
+    } catch (err) {
+      setError("User not found!");
+    }
   };
 
   return (
