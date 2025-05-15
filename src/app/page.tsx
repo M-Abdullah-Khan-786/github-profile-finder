@@ -14,6 +14,12 @@ export default function HomePage() {
 
   const handleSearch = async (username: string) => {
     try {
+      if (!username.trim()) {
+        setError("Username cannot be empty!");
+        setUser(null);
+        setRepos([]);
+        return;
+      }
       setError("");
       setUser(null);
       setRepos([]);

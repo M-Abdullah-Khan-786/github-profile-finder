@@ -11,9 +11,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.trim()) {
-      onSearch(input.trim());
-    }
+    onSearch(input.trim());
   };
 
   return (
